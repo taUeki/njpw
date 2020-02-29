@@ -15,23 +15,23 @@ class CreateProfilesTable extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('unit_id');
-            $table->unsignedInteger('chanpion_id');
+            $table->unsignedBigInteger('unit_id');
+            $table->unsignedBigInteger('champion_id');
             $table->string('name');
             $table->string('filename');
             $table->date('birthday');
-            $table->float('height', 8, 2);
-            $table->float('weight', 8, 2);
+            $table->integer('height');
+            $table->integer('weight');
             $table->string('theme_song');
             $table->text('description');
             $table->timestamps();
             
-            // 外部キーを追加
+            //外部キー
             $table->foreign('unit_id')
                 ->references('id')
                 ->on('units')
                 ->onDelete('cascade');
-            $table->foreign('chanpion_id')
+            $table->foreign('champion_id')
                 ->references('id')
                 ->on('champions')
                 ->onDelete('cascade');

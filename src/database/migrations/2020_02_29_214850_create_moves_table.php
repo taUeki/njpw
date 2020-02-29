@@ -15,11 +15,10 @@ class CreateMovesTable extends Migration
     {
         Schema::create('moves', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('profile_id');
+            $table->unsignedBigInteger('profile_id');
             $table->string('move');
             $table->timestamps();
-            
-            // 外部キーを追加
+            //外部キー
             $table->foreign('profile_id')
                 ->references('id')
                 ->on('profiles')
