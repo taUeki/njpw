@@ -18,3 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//sendメソッド を利用してメールを送信する
+Route::get('/mail','TestMailController@send');
